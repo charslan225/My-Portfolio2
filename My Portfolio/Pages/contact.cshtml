@@ -1,0 +1,55 @@
+@page
+@model My_Portfolio.Pages.ContactModel
+
+<h3 class="section-title text-center">Contact Me</h3>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center mt-3">
+        @TempData["Success"]
+    </div>
+    <script>
+        setTimeout(function () {
+            var el = document.getElementById("successAlert");
+            if (el) {
+                el.style.transition = "opacity 0.5s";
+                el.style.opacity = "0";
+                setTimeout(() => el.remove(), 500);
+            }
+        }, 3000);
+    </script>
+}
+
+<div class="d-flex justify-content-center mt-4">
+    <form method="post" class="card p-4" style="max-width:480px; width:100%;">
+        
+        <input class="form-control mb-3"
+               asp-for="Name"
+               placeholder="Your Name" />
+               <span class="text-danger" asp-validation-for="Name"></span>
+
+        <input class="form-control mb-3"
+               asp-for="Email"
+               placeholder="Email Address" />
+               <span class="text-danger" asp-validation-for="Email"></span>
+
+
+        <textarea class="form-control mb-3"
+                  asp-for="Message"
+                  rows="4"
+                  placeholder="Your Message"></textarea>
+                  <span class="text-danger" asp-validation-for="Message"></span>
+
+        <div class="text-center">
+            <button class="btn btn-accent px-4">
+                Send Message
+            </button>
+        </div>
+
+    </form>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

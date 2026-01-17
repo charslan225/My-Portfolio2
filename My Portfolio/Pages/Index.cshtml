@@ -1,0 +1,39 @@
+﻿@page
+@model My_Portfolio.Pages.IndexModel
+@{
+  ViewData["Title"] = "Home";
+}
+
+<section class="hero-section">
+  <div class="hero-left">
+    <div class="hero-sub">Hello — I'm</div>
+    <div class="hero-title">Muhammad Arslan Shafiq</div>
+    <div class="hero-sub">A .NET developer , Unity game dev , Multiplayer & Backend developer</div>
+
+    <div class="mt-4">
+      <a href="/Projects" class="btn btn-accent me-2">View Projects</a>
+      <a href="/Contact" class="btn btn-outline-light btn-outline-soft">Contact</a>
+    </div>
+  </div>
+
+  <div class="hero-avatar">
+    <img src="/images/avatar.png" class="main-avatar" alt="avatar" />
+
+    <div class="float-icon f1"><img src="/images/html.png" style="width:26px" /></div>
+    <div class="float-icon f2"><img src="/images/css.png" style="width:26px" /></div>
+    <div class="float-icon f3"><img src="/images/js.png" style="width:26px" /></div>
+    <div class="float-icon f4"><img src="/images/csharp.png" style="width:26px" /></div>
+    <div class="float-icon f5"><img src="/images/unity.png" style="width:26px" /></div>
+  </div>
+</section>
+
+<hr/>
+
+<div>
+  <div class="section-title">Skills</div>
+  <div class="row g-4 mt-2">
+    <div class="col-md-4"><div class="card p-3 h-100"><h6>Frontend</h6><p class="text-muted">HTML, CSS, Bootstrap, JS</p></div></div>
+    <div class="col-md-4"><div class="card p-3 h-100"><h6>Backend</h6><p class="text-muted">ASP.NET Core, Razor Pages, APIs</p></div></div>
+    <div class="col-md-4"><div class="card p-3 h-100"><h6>Game Dev</h6><p class="text-muted">Unity, Netcode, VFX</p></div></div>
+  </div>
+</div>

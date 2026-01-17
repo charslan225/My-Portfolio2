@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@ViewData["Title"] - Muhammad Arslan Shafiq</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg: #0b0a0a;
+      --panel: #120d0d;
+      --muted: #b9a3a3;
+      --accent: #ff2d2d;      /* main red */
+      --accent-2:#ff7a00;     /* orange highlight */
+    }
+
+    html,body {
+      height:100%;
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(180deg,#050303,var(--bg));
+      color:#f2eaea;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      background: rgba(77, 5, 5, 0.8);
+      border-bottom:1px solid rgba(255,45,45,0.15);
+      backdrop-filter: blur(8px);
+    }
+    .navbar-brand{
+      font-weight:800;
+      background:linear-gradient(45deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .nav-link{
+      color:var(--muted) !important;
+      margin-right:14px;
+      font-weight:500;
+    }
+    .nav-link:hover{ color:#fff !important; }
+
+    /* LAYOUT */
+    .main-container{
+      max-width:1150px;
+      margin:30px auto;
+      padding:0 18px;
+    }
+
+    /* HERO */
+    .hero-section{
+      display:flex;
+      gap:40px;
+      align-items:center;
+      justify-content:space-between;
+      min-height:76vh;
+      padding-top:20px;
+    }
+    .hero-left{ flex:1; max-width:640px; }
+    .hero-title{
+      font-size:clamp(32px,6vw,56px);
+      font-weight:800;
+      margin-bottom:8px;
+    }
+    .hero-title span{
+      background:linear-gradient(45deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero-sub{
+      color:var(--muted);
+      font-size:18px;
+      margin-bottom:22px;
+    }
+
+    /* BUTTONS */
+    .btn-accent{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      border:none;
+      color:#fff;
+      font-weight:600;
+      border-radius:30px;
+      padding:10px 24px;
+      box-shadow:0 14px 40px rgba(255,45,45,0.45);
+      transition:.25s;
+    }
+    .btn-accent:hover{
+      transform:translateY(-2px);
+      box-shadow:0 20px 55px rgba(255,45,45,0.75);
+    }
+    .btn-outline-soft{
+      border-radius:30px;
+      padding:9px 20px;
+      border:1px solid rgba(255,45,45,0.6);
+      color:#ffb3b3;
+    }
+    .btn-outline-soft:hover{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    /* AVATAR */
+    .hero-avatar{
+      position:relative;
+      width:340px;
+      height:340px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .main-avatar{
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      object-fit:cover;
+      border:6px solid rgba(255,45,45,0.35);
+      box-shadow:0 0 45px rgba(255,45,45,0.6);
+    }
+
+    /* FLOATING ICONS */
+    .float-icon{
+      width:48px;
+      height:48px;
+      position:absolute;
+      border-radius:50%;
+      padding:6px;
+      background:rgba(255,60,60,0.10);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 8px 30px rgba(255,45,45,0.55);
+    }
+    .f1{ top:-24px; left:10px; animation:float1 5s ease-in-out infinite; }
+    .f2{ top:6px; right:-28px; animation:float2 5s ease-in-out infinite; }
+    .f3{ bottom:-20px; left:-6px; animation:float3 5s ease-in-out infinite; }
+    .f4{ bottom:-10px; right:6px; animation:float4 5s ease-in-out infinite; }
+    .f5{ top:-40px; right:40px; animation:float5 6s ease-in-out infinite; }
+
+    @@keyframes float1{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
+    @@keyframes float2{0%{transform:translateY(0)}50%{transform:translateY(-22px)}100%{transform:translateY(0)}}
+    @@keyframes float3{0%{transform:translateY(0)}50%{transform:translateY(-14px)}100%{transform:translateY(0)}}
+    @@keyframes float4{0%{transform:translateY(0)}50%{transform:translateY(-26px)}100%{transform:translateY(0)}}
+    @@keyframes float5{0%{transform:translateY(0)}50%{transform:translateY(-32px)}100%{transform:translateY(0)}}
+
+    /* CARDS & SECTIONS */
+    .section-title{
+      display:inline-block;
+      border-left:4px solid var(--accent);
+      padding-left:12px;
+      font-weight:600;
+      margin-bottom:18px;
+    }
+    .card{
+  background: linear-gradient(
+    180deg,
+    rgba(255,45,45,0.12),
+    rgba(18,13,13,0.95)
+  );
+  border: 1px solid rgba(255,45,45,0.35);
+  border-radius: 18px;
+  color:#f5eaea;
+  box-shadow:
+    0 6px 25px rgba(0,0,0,0.6),
+    inset 0 0 18px rgba(255,45,45,0.08);
+  transition: all .3s ease;
+}
+
+.card:hover{
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 25px 65px rgba(255,45,45,0.55),
+    inset 0 0 25px rgba(255,45,45,0.15);
+  border-color: var(--accent);
+}
+/* CARD SUB TEXT FIX */
+.card .text-muted,
+.card small,
+.card p{
+  color:#f1cfcf !important;
+  opacity:1 !important;
+  font-weight:400;
+  letter-spacing:.2px;
+}
+
+    /* FOOTER */
+    footer{
+      background-color: #360303;
+      color:var(--muted);
+      padding:36px 0;
+      text-align:center;
+      border-top:1px solid rgba(77, 5, 5, 0.815);
+      margin-top:48px;
+    }
+
+    /* RESPONSIVE */
+    @@media(max-width:900px){
+      .hero-section{ flex-direction:column-reverse; gap:30px; min-height:auto; }
+      .hero-avatar{ width:300px; height:300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container main-container">
+      <a class="navbar-brand" href="/">Arslan</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/About">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Contact">Contact</a></li>
+          <li class="nav-item ms-3"><a class="btn btn-sm btn-outline-light" href="/files/CV.pdf" download>Download CV</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-container">
+    @RenderBody()
+  </div>
+
+  <footer>
+    © @DateTime.Now.Year — Muhammad Arslan Shafiq · Built with .NET & Bootstrap
+    <div class="mt-2">
+      <a class="text-muted me-3" href="https://github.com/yourusername" target="_blank"><img src="/images/github.png" /></a>
+      <a class="text-muted me-3" href="https://linkedin.com/in/yourprofile" target="_blank"><img src="/images/linkdin.png" /></a>
+    </div>
+  </footer>
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  @RenderSection("Scripts", required:false)
+
+</body>
+</html>
